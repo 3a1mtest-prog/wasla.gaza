@@ -124,6 +124,26 @@
     return 'https://wa.me/' + n + (text ? '?text=' + encodeURIComponent(text) : '');
   }
 
+  // ".gaza" is not a real top-level domain, so the shipped address can never
+  // receive mail. Treat it as unset rather than pointing buttons at a dead inbox.
+  function emailOk() {
+    var e = String(D.site.email || '');
+    return e.indexOf('@') > 0 && !/\.gaza$/i.test(e);
+  }
+
+  function mailLink(subject, body) {
+    if (!emailOk()) return '';
+    return 'mailto:' + D.site.email +
+      (subject ? '?subject=' + encodeURIComponent(subject) : '') +
+      (body ? (subject ? '&' : '?') + 'body=' + encodeURIComponent(body) : '');
+  }
+
+  /* Best contact link available, in order of preference. Falls back to the
+     Instagram profile so no call-to-action is ever a dead end. */
+  function contactLink(text, subject) {
+    return waLink(text) || mailLink(subject || t('nav.cta'), text) || D.site.social.instagram || '#contact';
+  }
+
   function defaultWaText() {
     return lang === 'ar'
       ? 'مرحبا وصلة ميديا 👋 حابب أستفسر عن خدماتكم.'
@@ -138,7 +158,7 @@
       var msg = lang === 'ar'
         ? 'مرحبا 👋 بدي أستفسر عن خدمة: ' + s.title.ar
         : 'Hello 👋 I would like to ask about: ' + s.title.en;
-      var href = waLink(msg) || ('mailto:' + D.site.email + '?subject=' + encodeURIComponent(L(s.title)));
+      var href = contactLink(msg, L(s.title));
       return '' +
         '<article class="card service reveal" style="--delay:' + (i % 4) * 70 + 'ms">' +
           '<div class="service__icon">' + icon(s.icon) + '</div>' +
@@ -281,8 +301,15 @@
     if (wa) {
       items.push({ icon: 'whatsapp', label: t('contact.whatsapp'), value: '+' + waNumber(), href: wa, ext: true });
     }
-    if (D.site.email) {
+    if (emailOk()) {
       items.push({ icon: 'mail', label: t('contact.email'), value: D.site.email, href: 'mailto:' + D.site.email });
+    }
+    if (!wa && !emailOk() && D.site.social.instagram) {
+      items.push({
+        icon: 'instagram', label: t('contact.follow'),
+        value: '@' + D.site.social.instagram.replace(/\/+$/, '').split('/').pop().split('?')[0],
+        href: D.site.social.instagram, ext: true,
+      });
     }
     items.push({ icon: 'pin', label: t('contact.location'), value: L(D.site.location), rtlText: true });
 
@@ -310,15 +337,9 @@
       }).join('');
     }
 
-    // Every WhatsApp CTA on the page
-    $$('[data-wa]').forEach(function (el) {
-      if (wa) {
-        el.setAttribute('href', wa);
-        el.removeAttribute('aria-disabled');
-      } else if (D.site.email) {
-        el.setAttribute('href', 'mailto:' + D.site.email);
-      }
-    });
+    // Every "talk to us" CTA on the page
+    var cta = contactLink(defaultWaText());
+    $$('[data-wa]').forEach(function (el) { el.setAttribute('href', cta); });
 
     // Service <select>
     var sel = $('#formService');
@@ -553,10 +574,12 @@
       var link = waLink(body);
 
       if (!link) {
-        if (D.site.email) {
-          window.location.href = 'mailto:' + D.site.email +
-            '?subject=' + encodeURIComponent(t('nav.cta') + ' — ' + name.value.trim()) +
-            '&body=' + encodeURIComponent(body);
+        var mail = mailLink(t('nav.cta') + ' — ' + name.value.trim(), body);
+        if (mail) { window.location.href = mail; return; }
+        // Nothing configured: send them somewhere real rather than nowhere.
+        if (D.site.social.instagram) {
+          window.open(D.site.social.instagram, '_blank', 'noopener');
+          status.textContent = t('form.errWhatsapp');
           return;
         }
         status.textContent = t('form.errWhatsapp');

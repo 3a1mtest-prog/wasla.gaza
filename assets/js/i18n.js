@@ -98,7 +98,7 @@ window.I18N = {
     'form.required': 'مطلوب',
     'form.errName': 'اكتب اسمك من فضلك.',
     'form.errMessage': 'اكتب سطرين عن مشروعك على الأقل.',
-    'form.errWhatsapp': 'رقم الواتساب مش مضبوط في إعدادات الموقع. تواصل معنا بالبريد الإلكتروني.',
+    'form.errWhatsapp': 'فتحنا لك صفحتنا على إنستغرام — ابعت لنا رسالتك من هناك.',
     'form.sent': 'فتحنا لك الواتساب برسالتك جاهزة — بس اضغط إرسال.',
 
     'footer.tagline': 'وكالة خدمات رقمية متكاملة — هوية، مواقع، تطبيقات، محتوى، وحملات.',
@@ -204,7 +204,7 @@ window.I18N = {
     'form.required': 'required',
     'form.errName': 'Please enter your name.',
     'form.errMessage': 'Please write at least a couple of lines about your project.',
-    'form.errWhatsapp': 'The WhatsApp number is not configured. Please reach us by email instead.',
+    'form.errWhatsapp': 'We opened our Instagram page for you — send your message there.',
     'form.sent': 'WhatsApp is open with your message ready — just hit send.',
 
     'footer.tagline': 'A full-service digital agency — identity, sites, apps, content, and campaigns.',

@@ -13,13 +13,13 @@ window.WASLA = {};
       Contact details — ⚠️ EDIT THESE BEFORE GOING LIVE
    --------------------------------------------------------------------------- */
 WASLA.site = {
-  domain: 'https://wasla.gaza',
-
   // رقم الواتساب بصيغة دولية بدون + وبدون مسافات. مثال: 970599123456
   // WhatsApp in international format, no + and no spaces.
-  whatsapp: '970000000000',
+  // ما دام فاضي أو placeholder، كل أزرار التواصل بتحوّل على الإنستغرام.
+  whatsapp: '',
 
-  email: 'info@wasla.gaza',
+  // بريد حقيقي فقط. اتركه فاضي لحد ما يصير عندك واحد شغّال.
+  email: '',
 
   location: { ar: 'غزة، فلسطين', en: 'Gaza, Palestine' },
 
