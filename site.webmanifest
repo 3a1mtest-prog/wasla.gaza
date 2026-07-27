@@ -1,0 +1,16 @@
+{
+  "name": "وصلة ميديا — Wasla Media",
+  "short_name": "وصلة ميديا",
+  "description": "وكالة خدمات رقمية: هوية بصرية، مواقع وتطبيقات، إدارة سوشيال ميديا، جرافيك، فيديو، وحملات إعلانية.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0F3A54",
+  "theme_color": "#0F3A54",
+  "icons": [
+    { "src": "assets/img/brand/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/img/brand/og.png", "sizes": "1200x630", "type": "image/png" }
+  ]
+}
