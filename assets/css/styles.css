@@ -5,16 +5,16 @@
 
 /* ---------- 1. Tokens ---------------------------------------------------- */
 :root {
-  /* Brand */
-  --navy-900: #071C29;
-  --navy-800: #0B2C40;
-  --navy: #0F3A54;
-  --navy-600: #16506F;
-  --teal: #1795A6;
-  --teal-600: #127F8E;
-  --teal-300: #63C3CE;
-  --lime: #A5C011;
-  --lime-600: #8AA30B;
+  /* Brand — sampled straight from the logo artwork */
+  --navy-900: #01131C;
+  --navy-800: #012333;
+  --navy: #013148;
+  --navy-600: #0A4E6C;
+  --teal: #0D8897;
+  --teal-600: #0C7E8C;   /* 4.8:1 on white — the text-safe teal */
+  --teal-300: #5CC0CD;
+  --lime: #8FA90A;
+  --lime-600: #7A9009;
 
   /* Semantic — light */
   --bg: #FFFFFF;
@@ -201,7 +201,14 @@ html[lang='ar'] .eyebrow { letter-spacing: 0; text-transform: none; font-size: .
 }
 
 .logo { display: flex; align-items: center; gap: var(--sp-3); flex: none; }
-.logo__mark { inline-size: 40px; block-size: 40px; flex: none; }
+/* The mark is 292x220 artwork — pin the height and let the width follow. */
+.logo__mark { block-size: 36px; inline-size: auto; flex: none; }
+/* Its navy sits at 1.4:1 against the dark surface, so give it a light plate
+   there rather than recolouring the artwork. */
+[data-theme='dark'] .logo__mark {
+  background: #F4F7F8; border-radius: var(--r-xs);
+  padding: 3px 6px; box-sizing: content-box;
+}
 .logo__text { display: flex; flex-direction: column; line-height: 1.15; }
 .logo__name { font-weight: 800; font-size: 1.05rem; letter-spacing: -.01em; }
 .logo__sub { font-size: .7rem; font-weight: 500; color: var(--text-faint); letter-spacing: .04em; }
@@ -298,10 +305,16 @@ html[lang='ar'] .logo__sub { letter-spacing: 0; font-size: .75rem; }
 .stat__value:not([data-count]) { font-size: clamp(1.15rem, 1rem + .5vw, 1.5rem); line-height: 1.35; }
 .stat__label { font-size: .875rem; color: rgb(255 255 255 / .68); margin-block-start: var(--sp-1); line-height: 1.5; }
 
-/* Decorative brand shapes */
-.hero__art { position: relative; display: none; aspect-ratio: 1; }
-@media (min-width: 940px) { .hero__art { display: block; } }
-.hero__art svg { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; }
+/* Brand card — the logo exactly as supplied, on its own light surface */
+.hero__art { display: none; }
+@media (min-width: 940px) { .hero__art { display: grid; place-items: center; } }
+.hero__card {
+  background: #F4F7F8; border-radius: var(--r-xl);
+  padding: clamp(2rem, 1rem + 3vw, 3.25rem);
+  box-shadow: 0 24px 60px rgb(0 0 0 / .38);
+  max-inline-size: 380px; inline-size: 100%;
+}
+.hero__card img { inline-size: 100%; block-size: auto; }
 .hero__glow {
   position: absolute; z-index: 1; inset-block-start: -20%; inset-inline-end: -10%;
   inline-size: 60vw; max-inline-size: 700px; aspect-ratio: 1;
@@ -598,8 +611,11 @@ html[dir='rtl'] .contact-item__value:not(.is-rtl) { text-align: end; }
 .footer__grid { display: grid; gap: var(--sp-6); grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
 .footer__grid > div:first-child { grid-column: 1 / -1; }
 @media (min-width: 760px) { .footer__grid > div:first-child { grid-column: auto; flex: 1.4; } }
-.footer .logo__name { color: #fff; }
-.footer .logo__sub { color: rgb(255 255 255 / .5); }
+.footer__logo {
+  display: inline-block; background: #F4F7F8;
+  border-radius: var(--r-md); padding: var(--sp-4) var(--sp-5);
+}
+.footer__logo img { block-size: 96px; inline-size: auto; }
 .footer p { font-size: .92rem; margin-block-start: var(--sp-4); max-width: 40ch; }
 .footer h4 { font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: #fff; margin-block-end: var(--sp-4); }
 html[lang='ar'] .footer h4 { letter-spacing: 0; text-transform: none; font-size: .95rem; }
