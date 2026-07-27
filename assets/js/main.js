@@ -299,7 +299,9 @@
     var items = [];
 
     if (wa) {
-      items.push({ icon: 'whatsapp', label: t('contact.whatsapp'), value: '+' + waNumber(), href: wa, ext: true });
+      // Group in threes so a 12-digit string stays readable at a glance.
+      var pretty = '+' + waNumber().replace(/(\d{3})(?=\d)/g, '$1 ');
+      items.push({ icon: 'whatsapp', label: t('contact.whatsapp'), value: pretty, href: wa, ext: true });
     }
     if (emailOk()) {
       items.push({ icon: 'mail', label: t('contact.email'), value: D.site.email, href: 'mailto:' + D.site.email });
