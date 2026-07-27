@@ -1,6 +1,6 @@
 /* ===========================================================================
-   وصلة ميديا — ملف المحتوى
-   Wasla Media — content file
+   وصلة — ملف المحتوى
+   Wasla — content file
 
    هذا هو الملف الوحيد اللي بتحتاج تعدّله لإضافة أعمال أو تغيير المعلومات.
    This is the only file you need to edit to add work or change info.

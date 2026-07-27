@@ -1,5 +1,5 @@
 /* ===========================================================================
-   وصلة ميديا — Wasla Media
+   وصلة — Wasla
    Rendering + interactions. No dependencies.
    =========================================================================== */
 (function () {
@@ -146,8 +146,8 @@
 
   function defaultWaText() {
     return lang === 'ar'
-      ? 'مرحبا وصلة ميديا 👋 حابب أستفسر عن خدماتكم.'
-      : 'Hello Wasla Media 👋 I would like to ask about your services.';
+      ? 'مرحبا وصلة 👋 حابب أستفسر عن خدماتكم.'
+      : 'Hello Wasla 👋 I would like to ask about your services.';
   }
 
   /* ---------- renderers -------------------------------------------------- */
@@ -565,10 +565,10 @@
 
       var svc = service.value === '__other' ? t('form.serviceOther') : service.value;
       var lines = lang === 'ar'
-        ? ['مرحبا وصلة ميديا 👋', '', 'الاسم: ' + name.value.trim(),
+        ? ['مرحبا وصلة 👋', '', 'الاسم: ' + name.value.trim(),
            phone.value.trim() ? 'رقم التواصل: ' + phone.value.trim() : '',
            svc ? 'الخدمة: ' + svc : '', '', message.value.trim()]
-        : ['Hello Wasla Media 👋', '', 'Name: ' + name.value.trim(),
+        : ['Hello Wasla 👋', '', 'Name: ' + name.value.trim(),
            phone.value.trim() ? 'Phone: ' + phone.value.trim() : '',
            svc ? 'Service: ' + svc : '', '', message.value.trim()];
 

@@ -1,9 +1,9 @@
-# وصلة ميديا — موقع معرض الأعمال
+# وصلة — موقع معرض الأعمال
 
 موقع ثابت (HTML + CSS + JS) بدون أي build أو مكتبات خارجية. عربي RTL بشكل أساسي مع تبديل
 للإنجليزية LTR، ووضع فاتح وداكن.
 
-**Wasla Media portfolio site** — a dependency-free static site. Arabic-first (RTL) with an
+**Wasla portfolio site** — a dependency-free static site. Arabic-first (RTL) with an
 English (LTR) toggle, plus light and dark themes.
 
 ---

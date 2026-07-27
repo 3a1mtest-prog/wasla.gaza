@@ -5,7 +5,7 @@
 
 window.I18N = {
   ar: {
-    'meta.title': 'وصلة ميديا — خدمات رقمية متكاملة',
+    'meta.title': 'وصلة — خدمات رقمية متكاملة',
     'meta.desc': 'وكالة خدمات رقمية: هوية بصرية، مواقع وتطبيقات، إدارة سوشيال ميديا، جرافيك، فيديو، وحملات إعلانية.',
 
     'a11y.skip': 'تخطَّ إلى المحتوى',
@@ -17,7 +17,7 @@ window.I18N = {
     'a11y.next': 'التالي',
     'a11y.toTop': 'العودة للأعلى',
 
-    'brand.name': 'وصلة ميديا',
+    'brand.name': 'وصلة',
     'brand.sub': 'خدمات رقمية',
 
     'nav.services': 'خدماتنا',
@@ -111,7 +111,7 @@ window.I18N = {
   },
 
   en: {
-    'meta.title': 'Wasla Media — Full-Service Digital Agency',
+    'meta.title': 'Wasla — Full-Service Digital Agency',
     'meta.desc': 'Digital agency: brand identity, websites and apps, social media management, graphic design, video, and ad campaigns.',
 
     'a11y.skip': 'Skip to content',
@@ -123,7 +123,7 @@ window.I18N = {
     'a11y.next': 'Next',
     'a11y.toTop': 'Back to top',
 
-    'brand.name': 'Wasla Media',
+    'brand.name': 'Wasla',
     'brand.sub': 'Digital Services',
 
     'nav.services': 'Services',
